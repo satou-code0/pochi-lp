@@ -3,29 +3,32 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { 
-  MousePointerClick, 
-  Cog, 
-  ClipboardCheck 
+  MessageSquareText, 
+  Code, 
+  CheckCircle 
 } from 'lucide-react';
 
 const steps = [
   {
-    title: 'ボタンをポチッ',
-    description: '専用ボタンをクリックするだけで処理を開始。複雑な操作は一切必要ありません。',
-    icon: MousePointerClick,
+    title: 'ヒアリング',
+    description: '業務の流れを丁寧にお聞きします',
+    icon: MessageSquareText,
     color: 'bg-primary text-white',
+    oneWord: '対話'
   },
   {
-    title: '自動処理',
-    description: 'AIがデータを解析し、必要な作業を自動的に処理。バックグラウンドで確実に実行します。',
-    icon: Cog,
+    title: '開発・実装',
+    description: 'オーダーメイドでAIアプリを構築',
+    icon: Code,
     color: 'bg-secondary text-white',
+    oneWord: '創造'
   },
   {
-    title: 'レポート受け取り',
-    description: '処理結果をわかりやすくレポート化。安心の完了通知と詳細な作業内容を確認できます。',
-    icon: ClipboardCheck,
+    title: '納品・運用',
+    description: '導入後も伴走サポートします',
+    icon: CheckCircle,
     color: 'bg-primary text-white',
+    oneWord: '安心'
   },
 ];
 
@@ -59,11 +62,11 @@ export default function ThreeSteps() {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            たった<span className="text-primary">3ステップ</span>で業務効率化
+            たった<span className="text-primary">3ステップ</span>でAIアプリ導入
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            「オシゴトポチッと」があれば、複雑な業務もシンプルに。
-            誰でも簡単に使えるシステムで、バックオフィス業務の生産性を飛躍的に向上させます。
+            「オシゴトポチッと」は、あなたの業務に完全にフィットするAIアプリを開発します。
+            ヒアリングから開発、運用まで、すべてをワンストップでサポートするので安心です。
           </p>
         </div>
 
@@ -88,6 +91,7 @@ export default function ThreeSteps() {
                 {index + 1}
               </div>
               
+              <span className="text-sm font-medium uppercase text-secondary mb-1">{step.oneWord}</span>
               <h3 className="text-xl font-bold mb-3">{step.title}</h3>
               <p className="text-muted-foreground">{step.description}</p>
             </motion.div>

@@ -4,52 +4,124 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Check, X } from 'lucide-react';
 import { Button } from '../ui/button';
+import Link from 'next/link';
 
 const pricingPlans = [
   {
-    name: 'Lite',
-    description: '小規模チーム向け基本プラン',
-    price: '19,800',
+    name: 'シンプル',
+    description: '単発作業の自動化',
+    price: '15万円〜',
+    priceDetail: '税抜',
+    included: [
+      '要件ヒアリング 1回',
+      '画面数 3以内',
+      'クラウド連携 1系統',
+      '操作ガイド付き',
+    ],
+    bestFor: [
+      '「単発作業を自動化したい」',
+      '「紙→デジタルへ まず1本」',
+    ],
+    examples: [
+      'OCR(画像認識) × スプレッドシート保存',
+      '名刺 → 顧客リスト化',
+      'レシート撮影 → 経費台帳へ',
+    ],
     features: [
-      { name: '同時ユーザー数', value: '5名まで' },
-      { name: '自動化タスク数', value: '月20回まで', included: true },
-      { name: 'OCR機能', value: '基本のみ', included: true },
-      { name: 'データ保存期間', value: '3ヶ月', included: true },
-      { name: '承認フロー', value: '1段階', included: true },
-      { name: 'API連携', value: '3つまで', included: true },
-      { name: 'カスタムワークフロー', value: '非対応', included: false },
-      { name: '専任サポート', value: '非対応', included: false },
+      { name: '要件定義・ヒアリング', included: true },
+      { name: 'UI/UXデザイン', included: true },
+      { name: 'AI機能実装', included: true },
+      { name: '保守サポート', value: '6ヶ月', included: true },
+      { name: '専任担当者', included: true },
+      { name: 'カスタマイズ範囲', value: '標準', included: true },
     ],
   },
   {
-    name: 'Standard',
-    description: '中規模企業向け拡張プラン',
-    price: '49,800',
+    name: 'スタンダード',
+    description: '月次ルーチンの自動化',
+    price: '45万円〜',
+    priceDetail: '税抜',
     popular: true,
+    included: [
+      '画面数 10以内',
+      'クラウド／メール連携 2〜3系統',
+      'UX相談 2サイクル',
+      '導入トレーニング 1h',
+    ],
+    bestFor: [
+      '「月次ルーチンをまとめて自動化」',
+      '「社内10〜30名で使う」',
+    ],
+    examples: [
+      '売上日報 → 集計レポート自動送信',
+      '在庫表 ↔ ネットショップ自動同期',
+      '顧客問い合わせ → AIで一次返信',
+    ],
     features: [
-      { name: '同時ユーザー数', value: '20名まで' },
-      { name: '自動化タスク数', value: '月100回まで', included: true },
-      { name: 'OCR機能', value: '高精度', included: true },
-      { name: 'データ保存期間', value: '1年', included: true },
-      { name: '承認フロー', value: '3段階', included: true },
-      { name: 'API連携', value: '10個まで', included: true },
-      { name: 'カスタムワークフロー', value: '5つまで', included: true },
-      { name: '専任サポート', value: 'メールのみ', included: true },
+      { name: '要件定義・ヒアリング', included: true },
+      { name: 'UI/UXデザイン', included: true },
+      { name: 'AI機能実装', included: true },
+      { name: '保守サポート', value: '1年', included: true },
+      { name: '専任担当者', included: true },
+      { name: 'カスタマイズ範囲', value: '拡張', included: true },
     ],
   },
   {
-    name: 'Pro',
-    description: '大規模企業向け高機能プラン',
-    price: '99,800',
+    name: 'プロ',
+    description: '部門横断のワークフロー',
+    price: '90万円〜',
+    priceDetail: '税抜',
+    included: [
+      '画面数 20以内',
+      '外部API 5系統まで',
+      'AIモデル個別チューニング',
+      'Slack／Teams通知連携',
+      '対面トレーニング 3h',
+    ],
+    bestFor: [
+      '「部門横断のワークフローを一本化」',
+      '「100名規模・複数拠点で利用」',
+    ],
+    examples: [
+      '見積〜受注〜請求を1画面で管理',
+      '複数クラウド間のファイル自動整理',
+      '翻訳AI付き 海外取引書類の生成',
+    ],
     features: [
-      { name: '同時ユーザー数', value: '無制限' },
-      { name: '自動化タスク数', value: '無制限', included: true },
-      { name: 'OCR機能', value: 'AI高精度', included: true },
-      { name: 'データ保存期間', value: '無制限', included: true },
-      { name: '承認フロー', value: '無制限', included: true },
-      { name: 'API連携', value: '無制限', included: true },
-      { name: 'カスタムワークフロー', value: '無制限', included: true },
-      { name: '専任サポート', value: '24時間対応', included: true },
+      { name: '要件定義・ヒアリング', included: true },
+      { name: 'UI/UXデザイン', included: true },
+      { name: 'AI機能実装', included: true },
+      { name: '保守サポート', value: '1年', included: true },
+      { name: '専任担当者', included: true },
+      { name: 'カスタマイズ範囲', value: '高度', included: true },
+    ],
+  },
+  {
+    name: 'エンタープライズ',
+    description: '全社DXプロジェクト',
+    price: '要見積もり',
+    priceDetail: '概算200万円〜',
+    included: [
+      'ユーザー数 300名以上',
+      'SSO / 権限管理',
+      '専用インフラ / SLA 99.9%',
+      'データ移行 / セキュリティ監査',
+    ],
+    bestFor: [
+      '「全社DXプロジェクト」',
+      '「厳格なセキュリティ要件」',
+    ],
+    examples: [
+      '基幹システム連携 AIワークフロー',
+      '多言語対応 カスタマーサクセス基盤',
+    ],
+    features: [
+      { name: '要件定義・ヒアリング', included: true },
+      { name: 'UI/UXデザイン', included: true },
+      { name: 'AI機能実装', included: true },
+      { name: '保守サポート', value: '無制限', included: true },
+      { name: '専任担当者', included: true },
+      { name: 'カスタマイズ範囲', value: 'フル', included: true },
     ],
   },
 ];
@@ -84,11 +156,11 @@ export default function Pricing() {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-primary">料金プラン</span>
+            <span className="text-primary">開発費用</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            規模や目的に応じて最適なプランをお選びいただけます。
-            すべてのプランは14日間の無料トライアル付きです。
+            業務規模や複雑さに応じた最適なプランをご用意しています。
+            IT補助金申請サポート付きで初期費用を抑えられます。
           </p>
         </div>
 
@@ -97,13 +169,13 @@ export default function Pricing() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-6"
         >
           {pricingPlans.map((plan, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className={`bg-white rounded-2xl shadow-md overflow-hidden border-2 ${
+              className={`bg-white rounded-2xl shadow-md overflow-hidden border-2 h-full flex flex-col ${
                 plan.popular 
                   ? 'border-primary relative transform md:scale-105 md:-translate-y-2' 
                   : 'border-transparent'
@@ -111,46 +183,60 @@ export default function Pricing() {
             >
               {plan.popular && (
                 <div className="bg-primary text-white text-center py-1 text-sm font-medium">
-                  人気プラン
+                  おすすめ
                 </div>
               )}
               
-              <div className="p-6 md:p-8">
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <p className="text-muted-foreground mb-6">{plan.description}</p>
+              <div className="p-6 flex flex-col flex-grow">
+                <h3 className="text-xl font-bold mb-1">{plan.name}</h3>
+                <p className="text-muted-foreground text-sm mb-3">{plan.description}</p>
                 
-                <div className="mb-6">
-                  <span className="text-4xl font-bold">¥{plan.price}</span>
-                  <span className="text-muted-foreground"> / 月</span>
+                <div className="mb-4">
+                  <span className="text-3xl font-bold">{plan.price}</span>
+                  <span className="text-sm text-muted-foreground ml-1">{plan.priceDetail}</span>
                 </div>
                 
-                <Button 
-                  className={`w-full mb-8 ${
-                    plan.popular 
-                      ? 'bg-primary hover:bg-primary/90' 
-                      : 'bg-secondary hover:bg-secondary/90'
-                  }`}
-                >
-                  14日間無料で試す
-                </Button>
-                
-                <div className="space-y-4">
-                  {plan.features.map((feature, idx) => (
-                    <div key={idx} className="flex justify-between items-center">
-                      <span className="text-sm">{feature.name}</span>
-                      <div className="flex items-center">
-                        {feature.included !== undefined ? (
-                          feature.included ? (
-                            <Check className="h-5 w-5 text-green-500" />
-                          ) : (
-                            <X className="h-5 w-5 text-red-500" />
-                          )
-                        ) : (
-                          <span className="text-sm font-medium">{feature.value}</span>
-                        )}
-                      </div>
-                    </div>
+                <h4 className="font-medium text-sm border-b pb-1 mb-2">含まれる範囲</h4>
+                <ul className="text-sm space-y-1 mb-4">
+                  {plan.included.map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <Check className="h-4 w-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
                   ))}
+                </ul>
+                
+                <h4 className="font-medium text-sm border-b pb-1 mb-2">こんな課題に最適</h4>
+                <ul className="text-sm space-y-1 mb-4">
+                  {plan.bestFor.map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="text-primary mr-1">●</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <h4 className="font-medium text-sm border-b pb-1 mb-2">代表アプリ例</h4>
+                <ul className="text-sm space-y-1 mb-6">
+                  {plan.examples.map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="text-secondary mr-1">▶</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <div className="mt-auto">
+                  <a 
+                    href="#cta"
+                    className={`block text-center py-2 px-4 rounded-md text-white font-medium w-full ${
+                      plan.popular 
+                        ? 'bg-primary hover:bg-primary/90' 
+                        : 'bg-secondary hover:bg-secondary/90'
+                    }`}
+                  >
+                    無料相談を申し込む
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -159,11 +245,14 @@ export default function Pricing() {
         
         <div className="mt-16 text-center">
           <p className="text-muted-foreground mb-4">
-            カスタムプランも承ります。お気軽にお問い合わせください。
+            お客様の業務に最適なカスタム開発プランをご提案いたします。まずはお気軽にご相談ください。
           </p>
-          <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
-            法人向けカスタムプランについて
-          </Button>
+          <a 
+            href="#cta"
+            className="inline-flex items-center justify-center rounded-md border border-primary bg-transparent px-4 py-2 text-sm font-medium text-primary hover:bg-primary/10 transition-colors"
+          >
+            詳細を問い合わせる
+          </a>
         </div>
       </div>
     </section>

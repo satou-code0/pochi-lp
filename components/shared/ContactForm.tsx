@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/components/ui/use-toast';
 
 const formSchema = z.object({
   company: z.string().min(1, {
@@ -35,6 +36,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
   
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -55,7 +57,11 @@ export default function ContactForm() {
     setIsSubmitting(false);
     form.reset();
     
-    alert("お問い合わせありがとうございます。担当者より折り返しご連絡いたします。");
+    toast({
+      title: "ポチッと完了！",
+      description: "AIが準備中です...",
+      duration: 5000,
+    });
   };
 
   return (
@@ -81,7 +87,7 @@ export default function ContactForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>お名前</FormLabel>
+                <FormLabel>担当者名</FormLabel>
                 <FormControl>
                   <Input placeholder="山田 太郎" {...field} />
                 </FormControl>
@@ -134,7 +140,7 @@ export default function ContactForm() {
               送信中...
             </>
           ) : (
-            'ポチッと送信する'
+            'ポチッと送信'
           )}
         </Button>
       </form>

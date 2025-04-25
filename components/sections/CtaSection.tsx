@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import ContactForm from '@/components/shared/ContactForm';
+import { Check } from 'lucide-react';
 
 export default function CtaSection() {
   const [ref, inView] = useInView({
@@ -30,7 +31,7 @@ export default function CtaSection() {
   };
 
   return (
-    <section className="section-padding bg-gradient-to-br from-primary/10 to-secondary/10">
+    <section className="section-padding bg-gradient-to-br from-primary/10 to-secondary/10" id="cta">
       <div className="container-custom">
         <motion.div
           ref={ref}
@@ -41,12 +42,12 @@ export default function CtaSection() {
         >
           <motion.div variants={itemVariants}>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              今日から<span className="text-primary">ポチッと</span>
-              <br />始めてみませんか？
+              <span className="text-primary">お客様専用AI</span>の開発を
+              <br />始めませんか
             </h2>
             <p className="text-lg text-muted-foreground mb-6">
-              14日間の無料トライアルで、貴社の業務効率化を体験してみてください。
-              専任コンサルタントが導入から活用までしっかりサポートします。
+              御社の業務に完全にフィットしたAIアプリケーションを開発します。
+              まずは無料相談で、どのような開発が可能か専門エンジニアにご相談ください。
             </p>
             
             <ul className="space-y-3 mb-8">
@@ -54,37 +55,37 @@ export default function CtaSection() {
                 <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                   <Check className="h-4 w-4 text-primary" />
                 </div>
-                <span>初期費用0円、導入後すぐに効果を実感</span>
+                <span>初回相談無料、具体的な開発イメージをご提案</span>
               </li>
               <li className="flex items-center">
                 <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                   <Check className="h-4 w-4 text-primary" />
                 </div>
-                <span>業界最短2日で導入完了</span>
+                <span>DX補助金・IT導入補助金申請サポート対応</span>
               </li>
               <li className="flex items-center">
                 <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                   <Check className="h-4 w-4 text-primary" />
                 </div>
-                <span>専任担当者によるセットアップサポート</span>
+                <span>開発後のアフターサポートも充実</span>
               </li>
             </ul>
             
-            <div className="flex items-center space-x-4">
+            {/* <div className="flex items-center space-x-4">
               <div className="flex -space-x-2">
                 <div className="h-10 w-10 rounded-full bg-primary text-white flex items-center justify-center border-2 border-white font-bold">A</div>
                 <div className="h-10 w-10 rounded-full bg-secondary text-white flex items-center justify-center border-2 border-white font-bold">B</div>
                 <div className="h-10 w-10 rounded-full bg-green-500 text-white flex items-center justify-center border-2 border-white font-bold">C</div>
               </div>
               <div className="text-sm">
-                <p>4,000社以上の導入実績</p>
-                <p className="text-muted-foreground">平均満足度 4.8/5.0</p>
+                <p>650社以上の開発実績</p>
+                <p className="text-muted-foreground">顧客満足度 4.9/5.0</p>
               </div>
-            </div>
+            </div> */}
           </motion.div>
           
           <motion.div variants={itemVariants} className="bg-white p-6 md:p-8 rounded-xl shadow-lg">
-            <h3 className="text-xl font-bold mb-6 text-center">無料デモを申し込む</h3>
+            <h3 className="text-xl font-bold mb-6 text-center">無料相談を申し込む</h3>
             <ContactForm />
           </motion.div>
         </motion.div>
@@ -92,5 +93,3 @@ export default function CtaSection() {
     </section>
   );
 }
-
-import { Check } from 'lucide-react';

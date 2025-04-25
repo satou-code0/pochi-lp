@@ -7,19 +7,34 @@ import { Check } from 'lucide-react';
 
 const useCases = [
   {
-    title: '経費精算の自動化',
-    description: 'レシートをアップロードするだけで自動的にデータ化。承認フローも自動化できます。',
+    title: '帳票自動作成システム',
+    description: '業界特有の帳票をAIで自動生成',
     image: '/images/usecase-expenses.png',
+    details: [
+      '複雑な業界固有フォーマットに完全対応',
+      '既存システムとシームレスに連携',
+      '承認フローも含めた一貫プロセスを実現'
+    ]
   },
   {
-    title: '請求書処理の効率化',
-    description: '受領した請求書を自動で読み取り、会計システムに連携。支払い処理までスムーズに完了します。',
+    title: '営業支援アプリ',
+    description: '御社の営業フローに合わせたCRM',
     image: '/images/usecase-invoices.png',
+    details: [
+      '既存営業プロセスをそのままデジタル化',
+      'AI分析で顧客対応パターンを最適化',
+      '商談履歴と成約率を自動分析'
+    ]
   },
   {
-    title: '勤怠管理の簡素化',
-    description: '従業員の勤怠データを自動集計。シフト管理や給与計算との連携も簡単に実現できます。',
+    title: '在庫管理システム',
+    description: 'AIが在庫状況を予測・管理',
     image: '/images/usecase-attendance.png',
+    details: [
+      '御社特有の在庫管理ルールを完全実装',
+      '需要予測AIで適正在庫を自動計算',
+      '発注から納品までの全プロセス可視化'
+    ]
   },
 ];
 
@@ -53,11 +68,11 @@ export default function UseCases() {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-primary">ユースケース</span>
+            <span className="text-primary">開発事例</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            オシゴトポチットはさまざまなバックオフィス業務の自動化を実現します。
-            主な活用シーンをご紹介します。
+            オシゴトポチットは業種や業務に合わせた完全オーダーメイドのAIアプリを開発します。
+            これまでに実現した主な開発例をご紹介します。
           </p>
         </div>
 
@@ -92,24 +107,12 @@ export default function UseCases() {
                 <p className="text-lg text-muted-foreground mb-6">{useCase.description}</p>
                 
                 <ul className="space-y-3">
-                  {[1, 2, 3].map((item) => (
-                    <li key={item} className="flex items-start">
+                  {useCase.details.map((detail, detailIndex) => (
+                    <li key={detailIndex} className="flex items-start">
                       <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                         <Check className="h-4 w-4 text-primary" />
                       </div>
-                      <span className="text-foreground">
-                        {index === 0 && item === 1 && '手入力の工数を削減し、入力ミスをゼロに'}
-                        {index === 0 && item === 2 && '承認フローを自動化し、処理時間を短縮'}
-                        {index === 0 && item === 3 && 'リアルタイムでの経費状況の可視化を実現'}
-                        
-                        {index === 1 && item === 1 && 'OCRで請求書データを自動抽出し転記作業を削減'}
-                        {index === 1 && item === 2 && '支払いスケジュール管理と自動リマインド機能'}
-                        {index === 1 && item === 3 && '会計システムとのシームレスな連携を実現'}
-                        
-                        {index === 2 && item === 1 && '打刻データの自動集計で集計作業を大幅に削減'}
-                        {index === 2 && item === 2 && '異常値の自動検出でチェック工数を削減'}
-                        {index === 2 && item === 3 && '給与計算システムへのデータ連携を自動化'}
-                      </span>
+                      <span className="text-foreground">{detail}</span>
                     </li>
                   ))}
                 </ul>

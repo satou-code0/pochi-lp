@@ -3,31 +3,31 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { 
-  Banknote, 
+  TrendingUp, 
   Clock, 
-  BarChart3 
+  Sparkles 
 } from 'lucide-react';
 
 const benefits = [
   {
-    title: '人件費',
-    value: '-40%',
-    description: 'バックオフィス業務の自動化により、人件費を40%削減可能です。',
-    icon: Banknote,
+    title: '業務効率向上',
+    value: '生産性 +65%',
+    description: '余計な作業がなくなり本業に集中',
+    icon: TrendingUp,
     color: 'bg-orange-100 text-primary',
   },
   {
-    title: '作業時間',
-    value: '-120h',
-    description: '月間の作業時間を最大120時間削減。他の重要業務に集中できます。',
+    title: '開発期間短縮',
+    value: '最短2週間',
+    description: '迅速な開発で早期に効果を実感',
     icon: Clock,
     color: 'bg-blue-100 text-secondary',
   },
   {
-    title: 'ミス率',
-    value: '-95%',
-    description: '手作業によるミスを95%削減。正確な処理で業務品質が向上します。',
-    icon: BarChart3,
+    title: 'カスタム最適化',
+    value: '適合度 98%',
+    description: '御社の業務フローに完全対応',
+    icon: Sparkles,
     color: 'bg-green-100 text-green-600',
   },
 ];
@@ -62,11 +62,12 @@ export default function Benefits() {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-primary">導入効果</span>で選ばれています
+            <span className="text-primary">オーダーメイド開発</span>の価値
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            「オシゴトポチッと」の導入企業が実感している数字をご紹介します。
-            業種や規模を問わず、確実な効果を実感いただけます。
+            「オシゴトポチッと」による完全カスタマイズのAIアプリ開発は、
+            汎用ツールでは実現できない業務最適化を可能にします。
+            あなたの会社だけのための特別なソリューションを提供します。
           </p>
         </div>
 
@@ -89,12 +90,16 @@ export default function Benefits() {
               
               <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
               <p className="text-4xl md:text-5xl font-bold text-primary mb-4">
-                {benefit.value}
+                {benefit.value}<sup className="text-xs text-primary align-top">※</sup>
               </p>
               <p className="text-muted-foreground">{benefit.description}</p>
             </motion.div>
           ))}
         </motion.div>
+        
+        <div className="text-xs text-muted-foreground text-center mt-6">
+          <p>※ 弊社実施の導入企業聞き取りアンケートによる値</p>
+        </div>
       </div>
     </section>
   );

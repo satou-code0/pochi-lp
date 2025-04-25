@@ -9,6 +9,7 @@ import CtaSection from '@/components/sections/CtaSection';
 import Footer from '@/components/sections/Footer';
 import { AnimatedBackground } from '@/components/shared/AnimatedBackground';
 import Header from '@/components/sections/Header';
+import About from '@/components/sections/About';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <div className="relative z-10">
         <Header />
         <Hero />
+        <About />
         <ThreeSteps />
         <Benefits />
         <UseCases />
