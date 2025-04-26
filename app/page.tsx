@@ -19,9 +19,9 @@ export default function Home() {
         <Header />
         <Hero />
         <About />
+        <UseCases />
         <ThreeSteps />
         <Benefits />
-        <UseCases />
         <CaseStudies />
         <Pricing />
         <Faq />

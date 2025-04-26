@@ -62,7 +62,7 @@ export default function Benefits() {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-primary">オーダーメイド開発</span>の価値
+            <span className="text-primary">オーダーメイド開発</span>だからできること
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             「オシゴトポチッと」による完全カスタマイズのAIアプリ開発は、

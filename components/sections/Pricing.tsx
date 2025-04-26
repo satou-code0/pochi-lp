@@ -12,6 +12,7 @@ const pricingPlans = [
     description: '単発作業の自動化',
     price: '15万円〜',
     priceDetail: '税抜',
+    maintenance: '1.5万円〜/月',
     included: [
       '要件ヒアリング 1回',
       '画面数 3以内',
@@ -41,6 +42,7 @@ const pricingPlans = [
     description: '月次ルーチンの自動化',
     price: '45万円〜',
     priceDetail: '税抜',
+    maintenance: '3万円〜/月',
     popular: true,
     included: [
       '画面数 10以内',
@@ -71,6 +73,7 @@ const pricingPlans = [
     description: '部門横断のワークフロー',
     price: '90万円〜',
     priceDetail: '税抜',
+    maintenance: '5万円〜/月',
     included: [
       '画面数 20以内',
       '外部API 5系統まで',
@@ -101,6 +104,7 @@ const pricingPlans = [
     description: '全社DXプロジェクト',
     price: '要見積もり',
     priceDetail: '概算200万円〜',
+    maintenance: '要見積もり',
     included: [
       'ユーザー数 300名以上',
       'SSO / 権限管理',
@@ -191,9 +195,12 @@ export default function Pricing() {
                 <h3 className="text-xl font-bold mb-1">{plan.name}</h3>
                 <p className="text-muted-foreground text-sm mb-3">{plan.description}</p>
                 
-                <div className="mb-4">
+                <div className="mb-1">
                   <span className="text-3xl font-bold">{plan.price}</span>
                   <span className="text-sm text-muted-foreground ml-1">{plan.priceDetail}</span>
+                </div>
+                <div className="mb-4">
+                  <p className="text-sm text-muted-foreground">保守管理費: <span className="font-medium">{plan.maintenance}</span></p>
                 </div>
                 
                 <h4 className="font-medium text-sm border-b pb-1 mb-2">含まれる範囲</h4>
@@ -243,7 +250,25 @@ export default function Pricing() {
           ))}
         </motion.div>
         
-        <div className="mt-16 text-center">
+        <div className="mt-8 text-sm text-muted-foreground max-w-2xl mx-auto">
+          <h4 className="font-medium text-center mb-3">料金に関する補足事項</h4>
+          <ul className="space-y-2">
+            <li className="flex items-start">
+              <span className="text-primary mr-2">※</span>
+              <span>月額保守管理費には、システムの稼働監視、セキュリティアップデート、サーバー/ドメイン費用が含まれています。</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2">※</span>
+              <span>有料APIの利用料金（OpenAI、Google、AWS等の外部サービス利用費）は別途発生します。</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary mr-2">※</span>
+              <span>保守管理費は利用規模やカスタマイズの程度により変動します。詳細は個別にご相談ください。</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div className="mt-12 text-center">
           <p className="text-muted-foreground mb-4">
             お客様の業務に最適なカスタム開発プランをご提案いたします。まずはお気軽にご相談ください。
           </p>

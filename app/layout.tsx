@@ -28,11 +28,11 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: 'AIが考えて動く。あなたはボタンを押すだけ。',
-  description: 'あとはAIがぜんぶ。中小企業のバックオフィス業務をAIが自動化し、コスト削減と時間短縮を実現します。',
+  title: 'オシゴトポチッと | あとはAIがぜんぶ。',
+  description: 'AIが考えて動く。あなたはボタンを押すだけ。あとはAIがぜんぶ。中小企業のバックオフィス業務をAIが自動化し、コスト削減と時間短縮を実現します。',
   openGraph: {
-    title: 'AIが考えて動く。あなたはボタンを押すだけ。',
-    description: 'あとはAIがぜんぶ。',
+    title: 'オシゴトポチッと | あとはAIがぜんぶ。',
+    description: 'AIが考えて動く。あなたはボタンを押すだけ。あとはAIがぜんぶ。中小企業のバックオフィス業務をAIが自動化し、コスト削減と時間短縮を実現します。',
     images: [
       {
         url: '/images/og-image.png',

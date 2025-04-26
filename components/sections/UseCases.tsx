@@ -68,7 +68,7 @@ export default function UseCases() {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-primary">開発事例</span>
+            <span className="text-primary">こんなの作れます</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             オシゴトポチットは業種や業務に合わせた完全オーダーメイドのAIアプリを開発します。

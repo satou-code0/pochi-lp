@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion } from 'framer-motion';
-import { Loader2 } from 'lucide-react';
+import { Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -18,7 +18,9 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 
+// フォームのバリデーションスキーマ
 const formSchema = z.object({
   company: z.string().min(1, {
     message: '会社名を入力してください',
@@ -35,7 +37,11 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function ContactForm() {
+  // 送信状態の管理
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  
   const { toast } = useToast();
   
   const form = useForm<FormValues>({
@@ -49,24 +55,84 @@ export default function ContactForm() {
   });
 
   const onSubmit = async (data: FormValues) => {
+    // 送信状態をリセット
+    setSubmitStatus('idle');
+    setErrorMessage(null);
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    form.reset();
-    
-    toast({
-      title: "ポチッと完了！",
-      description: "AIが準備中です...",
-      duration: 5000,
-    });
+    try {
+      // APIエンドポイントにPOSTリクエスト
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      
+      // レスポンスをJSONとして解析
+      const result = await response.json();
+      
+      if (response.ok && result.success) {
+        // 送信成功
+        setSubmitStatus('success');
+        form.reset();
+        toast({
+          title: "送信完了しました！",
+          description: "お問い合わせありがとうございます。担当者よりご連絡いたします。",
+          duration: 5000,
+        });
+      } else {
+        // API側でエラーが発生
+        setSubmitStatus('error');
+        setErrorMessage(result.message || 'お問い合わせ送信中にエラーが発生しました。');
+        toast({
+          title: "エラーが発生しました",
+          description: result.message || "送信に失敗しました。時間をおいて再度お試しください。",
+          variant: "destructive",
+          duration: 5000,
+        });
+      }
+    } catch (error) {
+      // ネットワークエラーなど
+      setSubmitStatus('error');
+      setErrorMessage('ネットワークエラーが発生しました。インターネット接続を確認してください。');
+      toast({
+        title: "エラーが発生しました",
+        description: "ネットワークエラーが発生しました。インターネット接続を確認してください。",
+        variant: "destructive",
+        duration: 5000,
+      });
+      console.error('Form submission error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        {/* 送信状態表示エリア */}
+        {submitStatus === 'success' && (
+          <Alert className="bg-green-50 border-green-200">
+            <CheckCircle className="h-4 w-4 text-green-600" />
+            <AlertTitle className="text-green-800">送信完了</AlertTitle>
+            <AlertDescription className="text-green-700">
+              お問い合わせを受け付けました。担当者よりご連絡いたします。
+            </AlertDescription>
+          </Alert>
+        )}
+        
+        {submitStatus === 'error' && errorMessage && (
+          <Alert variant="destructive">
+            <AlertCircle className="h-4 w-4" />
+            <AlertTitle>エラーが発生しました</AlertTitle>
+            <AlertDescription>
+              {errorMessage}
+            </AlertDescription>
+          </Alert>
+        )}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField
             control={form.control}
