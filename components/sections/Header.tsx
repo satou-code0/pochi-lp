@@ -223,7 +223,7 @@ export default function Header() {
             <Link 
               key={link.name} 
               href={link.href}
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              className="text-base font-medium text-foreground hover:text-primary transition-colors"
             >
               {link.name}
             </Link>
@@ -326,7 +326,7 @@ export default function Header() {
                       className="bg-primary hover:bg-primary/90 text-white text-center rounded-xl py-4 px-6 text-lg font-medium block shadow-lg shadow-primary/25 relative overflow-hidden"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      <span className="relative z-10">無料デモを申し込む</span>
+                      <span className="relative z-10 text-base">無料デモを申し込む</span>
                       <span className="absolute inset-0 bg-gradient-to-tr from-primary to-primary/80 z-0" />
                     </Link>
                   </motion.div>
