@@ -118,7 +118,7 @@ export default function ContactForm() {
             <CheckCircle className="h-4 w-4 text-green-600" />
             <AlertTitle className="text-green-800">送信完了</AlertTitle>
             <AlertDescription className="text-green-700">
-              お問い合わせを受け付けました。担当者よりご連絡いたします。
+              お問い合わせを受け付けました。３営業日以内に担当者よりご連絡いたします。
             </AlertDescription>
           </Alert>
         )}
@@ -202,7 +202,7 @@ export default function ContactForm() {
         >
           {isSubmitting ? (
             <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              <Loader2 className="mr-2 h-4 w-4 animate-spin cursor-pointer" />
               送信中...
             </>
           ) : (

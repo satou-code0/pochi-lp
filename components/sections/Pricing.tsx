@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const pricingPlans = [
   {
-    name: 'シンプル',
+    name: 'ワンポイント',
     description: '単発作業の自動化',
     price: '15万円〜',
     priceDetail: '税抜',
@@ -99,35 +99,6 @@ const pricingPlans = [
       { name: 'カスタマイズ範囲', value: '高度', included: true },
     ],
   },
-  {
-    name: 'エンタープライズ',
-    description: '全社DXプロジェクト',
-    price: '要見積もり',
-    priceDetail: '概算200万円〜',
-    maintenance: '要見積もり',
-    included: [
-      'ユーザー数 300名以上',
-      'SSO / 権限管理',
-      '専用インフラ / SLA 99.9%',
-      'データ移行 / セキュリティ監査',
-    ],
-    bestFor: [
-      '「全社DXプロジェクト」',
-      '「厳格なセキュリティ要件」',
-    ],
-    examples: [
-      '基幹システム連携 AIワークフロー',
-      '多言語対応 カスタマーサクセス基盤',
-    ],
-    features: [
-      { name: '要件定義・ヒアリング', included: true },
-      { name: 'UI/UXデザイン', included: true },
-      { name: 'AI機能実装', included: true },
-      { name: '保守サポート', value: '無制限', included: true },
-      { name: '専任担当者', included: true },
-      { name: 'カスタマイズ範囲', value: 'フル', included: true },
-    ],
-  },
 ];
 
 export default function Pricing() {
@@ -173,7 +144,7 @@ export default function Pricing() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6"
         >
           {pricingPlans.map((plan, index) => (
             <motion.div

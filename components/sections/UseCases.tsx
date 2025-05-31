@@ -28,7 +28,7 @@ const useCases = [
   {
     title: '見積書・請求書 ワンクリック生成 & メール送信',
     description: '業務文書の作成・送信を自動化',
-    image: '/images/usecase-invoices.png',
+    image: '/gif/billgif.gif',
     industry: '製造／クリエイティブ／士業',
     before: [
       'テンプレをコピーして数字を書き換え→PDF化→メール添付',
@@ -115,21 +115,21 @@ export default function UseCases() {
               key={index}
               variants={itemVariants}
               className={`flex flex-col ${
-                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
               } gap-8 items-center`}
             >
-              <div className="w-full md:w-1/2">
-                <div className="relative h-64 md:h-80 w-full rounded-xl overflow-hidden shadow-lg">
+              <div className="w-full lg:w-1/2">
+                <div className="relative h-80 xl:h-96 w-full rounded-xl overflow-hidden ">
                   <Image
                     src={useCase.image}
                     alt={useCase.title}
                     fill
-                    className="object-cover"
+                    className="object-contain"
                   />
                 </div>
               </div>
               
-              <div className="w-full md:w-1/2">
+              <div className="w-full lg:w-1/2">
                 <h3 className="text-2xl font-bold mb-3">{useCase.title}</h3>
                 <p className="text-lg text-muted-foreground mb-4">{useCase.description}</p>
                 

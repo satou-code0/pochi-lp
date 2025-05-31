@@ -48,7 +48,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         { 
           success: true, 
-          message: 'お問い合わせを受け付けました。担当者よりご連絡いたします。' 
+          message: 'お問い合わせを受け付けました。３営業日以内に担当者よりご連絡いたします。' 
         }, 
         { status: 200 }
       );

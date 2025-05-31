@@ -28,6 +28,7 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: 'オシゴトポチッと | あとはAIがぜんぶ。',
   description: 'AIが考えて動く。あなたはボタンを押すだけ。あとはAIがぜんぶ。中小企業のバックオフィス業務をAIが自動化し、コスト削減と時間短縮を実現します。',
   openGraph: {
