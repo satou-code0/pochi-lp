@@ -116,32 +116,64 @@ export default function Hero() {
           >
             <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold mb-4 leading-relaxed">
               <span className="text-primary">AIが考えて動く。</span><br/>
-              あなたはボタンを押すだけ。
-            </h1>
-            
-            <p className="text-lg md:text-xl mb-8 text-foreground/80 max-w-lg mx-auto md:mx-0">
-              あとはAIがぜんぶ。
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-base rounded-full w-[80%] md:w-auto"
-                onClick={openVideoModal}
-              >
-                <Play className="mr-2 h-4 w-4" />
-                30秒でわかるAIデモを見る
-              </Button>
+              <span className="text-4xl">あなたはボタンを押すだけ。</span>
+              </h1>
               
-              {/* <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-primary text-primary hover:bg-primary/10 px-8 py-6 text-base rounded-full w-full sm:w-auto"
-                onClick={scrollToCta}
+            
+            {/* キャッチコピーエリア */}
+            <motion.div 
+              className="mb-8"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <div className="relative">
+                <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent rounded-2xl p-6 border border-primary/20 backdrop-blur-sm">
+                  <p className="text-xl md:text-2xl font-semibold text-foreground mb-2">
+                    ✨ あとはAIがぜんぶ。
+                  </p>
+                  <p className="text-sm md:text-base text-foreground/70 leading-relaxed">
+                    複雑な作業も、面倒な設定も必要ありません。<br/>
+                    すべてAIが自動で処理します。
+                  </p>
+                </div>
+                
+                {/* 装飾的なアクセント */}
+                <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary/20 rounded-full animate-pulse"></div>
+                <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-primary/30 rounded-full animate-pulse delay-300"></div>
+              </div>
+            </motion.div>
+            
+            {/* CTAボタンエリア */}
+            <motion.div 
+              className="space-y-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                <Button 
+                  size="lg" 
+                  className="group bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white px-10 py-6 text-lg font-semibold rounded-full w-[90%] sm:w-auto shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  onClick={scrollToCta}
+                > 
+                  <span className="flex items-center gap-2">
+                    今すぐ始める
+                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
+                </Button>
+              </div>
+              
+              {/* サブテキスト */}
+              <motion.p 
+                className="text-sm text-foreground/60 text-center md:text-left"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
               >
-                詳しく見る
-              </Button> */}
-            </div>
+                お問い合わせ後、2日以内にご返信いたします。
+              </motion.p>
+            </motion.div>
           </motion.div>
         </div>
       </div>

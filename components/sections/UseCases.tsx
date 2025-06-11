@@ -9,7 +9,7 @@ const useCases = [
   {
     title: '手書きメモ → スプレッドシート自動転記',
     description: 'OCR × Sheets 連携で現場作業を効率化',
-    image: '/images/usecase-expenses.png',
+    image: '/gif/ocr.gif',
     industry: '建設現場・フィールドサービス',
     before: [
       '現場メモを写真→事務員が手入力',
@@ -47,7 +47,7 @@ const useCases = [
   {
     title: '在庫 & EC 在庫 同期 + 発注点予測',
     description: 'AIが販売ペースを学習し最適在庫を維持',
-    image: '/images/usecase-attendance.png',
+    image: '/gif/stock.gif',
     industry: '小売／メーカー (10〜100名)',
     before: [
       '倉庫在庫とネットショップの数がズレる',
