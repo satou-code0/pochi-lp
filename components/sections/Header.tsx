@@ -232,7 +232,7 @@ export default function Header() {
             href="#cta"
             className="bg-primary hover:bg-primary/90 text-white rounded-md px-4 py-2 text-sm font-medium inline-flex items-center justify-center"
           >
-            無料デモを申し込む
+            無料相談を申し込む
           </Link>
         </nav>
 
