@@ -4,27 +4,30 @@ import { Inter, Poppins, Noto_Sans_JP } from 'next/font/google';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 
-// Import Inter for body text
+// Import Inter for body text with fallback
 const inter = Inter({ 
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
 });
 
-// Import Poppins for headings
+// Import Poppins for headings with fallback
 const poppins = Poppins({ 
   subsets: ['latin'],
   weight: ['700'],
   variable: '--font-poppins',
   display: 'swap',
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
 });
 
-// Import Noto Sans JP from Google Fonts instead of local files
+// Import Noto Sans JP from Google Fonts with fallback
 const notoSansJP = Noto_Sans_JP({
   weight: ['400', '700'],
   subsets: ['latin'],
   variable: '--font-noto-sans-jp',
   display: 'swap',
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
 });
 
 export const metadata: Metadata = {

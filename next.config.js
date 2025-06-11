@@ -8,6 +8,9 @@ const nextConfig = {
     // Fast Refreshの安定性を向上
     forceSwcTransforms: true,
   },
+  // フォント最適化とタイムアウト設定
+  optimizeFonts: true,
+  swcMinify: true,
   webpack: (config, { dev, isServer }) => {
     // Use memory-based caching in development to avoid file system issues
     if (dev && !isServer) {
